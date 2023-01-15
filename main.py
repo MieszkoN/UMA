@@ -139,8 +139,8 @@ if __name__ == '__main__':
     print("---------------------------------------------------------------------------------------------------------------------------")
 
     print("-------------------------------- Random forest for Parkinson dataset-------------------------------------------------------")
-    print("Accuracy for standard implementation decision tree:", round(metrics.accuracy_score(Y_test_parkinson, Y_pred_scikit_random_forest_parkinson) * 100, 2))
-    print("Accuracy for custom implementation of decision tree:", round(metrics.accuracy_score(Y_test_parkinson,  Y_pred_custom_forest_parkinson) * 100, 2))
+    print("Accuracy for standard implementation random forest:", round(metrics.accuracy_score(Y_test_parkinson, Y_pred_scikit_random_forest_parkinson) * 100, 2))
+    print("Accuracy for custom implementation of random forest:", round(metrics.accuracy_score(Y_test_parkinson,  Y_pred_custom_forest_parkinson) * 100, 2))
 
     print(f"Standard tree action time: {scikit_random_forest_time_parkinson}s")
     print(f"Custom tree action time: {custom_forest_time_parkinson}s")
