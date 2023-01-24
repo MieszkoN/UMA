@@ -211,17 +211,17 @@ class RandomForestClassifier():
 
     def __init__(
             self,
-            Y: list,
             X: pd.DataFrame,
+            Y: list,
             min_samples_split=None,
             max_depth=None,
-            n_trees=None,
+            n_estimators=None,
             X_features_fraction=None,
             X_obs_fraction=None
     ):
 
-        self.Y = Y
         self.X = X
+        self.Y = Y
 
         self.min_samples_split = min_samples_split if min_samples_split else 20
         self.max_depth = max_depth if max_depth else 5
@@ -230,7 +230,7 @@ class RandomForestClassifier():
 
         self.n_features = len(self.features)
 
-        self.n_trees = n_trees if n_trees is not None else 30
+        self.n_estimators = n_estimators if n_estimators is not None else 30
         self.X_features_fraction = X_features_fraction if X_features_fraction is not None else 1.0
         self.X_obs_fraction = X_obs_fraction if X_obs_fraction is not None else 1.0
 
@@ -247,7 +247,7 @@ class RandomForestClassifier():
 
         random_forest = []
 
-        for _ in range(self.n_trees):
+        for _ in range(self.n_estimators):
             X, Y = self.random_sample()
 
             tree = RF_Tree(
@@ -266,7 +266,7 @@ class RandomForestClassifier():
     def tree_predictions(self, X: pd.DataFrame) -> list:
 
         predictions = []
-        for i in range(self.n_trees):
+        for i in range(self.n_estimators):
             predictedClass = self.random_forest[i].predict(X)
             predictions.append(predictedClass)
 
